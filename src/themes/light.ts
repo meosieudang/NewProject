@@ -122,49 +122,49 @@ const theme = createTheme({
             fontSize: 14,
             lineHeight: 20,
             fontWeight: 400,
-            color: 'text.primary'
+            color: 'text.default'
         },
         caption: {
             fontFamily: 'Mulish-Regular',
             fontSize: 12,
             lineHeight: 16,
             fontWeight: 400,
-            color: 'text.primary'
+            color: 'text.default'
         },
         captionSemibold: {
             fontFamily: 'Mulish-Regular',
             fontSize: 12,
             lineHeight: 16,
             fontWeight: 600,
-            color: 'text.primary'
+            color: 'text.default'
         },
         body: {
             fontFamily: 'Mulish-Regular',
             fontSize: 14,
             lineHeight: 20,
             fontWeight: 400,
-            color: 'text.primary'
+            color: 'text.default'
         },
         bodySemibold: {
             fontFamily: 'Mulish-Regular',
             fontSize: 14,
             lineHeight: 20,
             fontWeight: 400,
-            color: 'text.primary'
+            color: 'text.default'
         },
         headline: {
             fontFamily: 'Mulish-Regular',
             fontSize: 24,
             lineHeight: 28,
             fontWeight: 600,
-            color: 'text.primary'
+            color: 'text.default'
         },
         title: {
             fontFamily: 'Mulish-Regular',
             fontSize: 18,
             lineHeight: 24,
             fontWeight: 600,
-            color: 'text.primary'
+            color: 'text.default'
         },
         subtitle: {
             fontSize: 16,
