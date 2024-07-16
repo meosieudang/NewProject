@@ -6,5 +6,5 @@ import Touchable, { TouchableOpacity } from './touchable';
 import SafeAreaView from './safe-area-view';
 import TextInput from './text-input';
 import HStack from './h-stack';
-
-export { Box, Text, Container, Pressable, Touchable, TouchableOpacity, SafeAreaView, TextInput, HStack };
+import Image from './image';
+export { Image, Box, Text, Container, Pressable, Touchable, TouchableOpacity, SafeAreaView, TextInput, HStack };
