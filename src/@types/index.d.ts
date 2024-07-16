@@ -1,2 +1,2 @@
 declare namespace _ {}
-declare namespace dayjs {}
+declare const faker;
