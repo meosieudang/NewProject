@@ -1,12 +1,12 @@
 import _, { LoDashStatic } from 'lodash';
-import * as dayjs from 'dayjs';
+import { faker, Faker } from '@faker-js/faker';
 
 declare global {
     interface Window {
         _: LoDashStatic;
-        dayjs: {};
+        faker: Faker;
     }
 }
 
 window._ = _;
-window.dayjs = dayjs;
+window.faker = faker;
