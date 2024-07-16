@@ -7,7 +7,7 @@ import React from 'react';
 const AppContainer = () => {
     return (
         <NavigationContainer ref={navigation.navigationRef}>
-            {!true ? <InsideStackNavigator /> : <OutsideStackNavigator />}
+            {true ? <InsideStackNavigator /> : <OutsideStackNavigator />}
         </NavigationContainer>
     );
 };

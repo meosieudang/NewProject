@@ -67,7 +67,7 @@ const theme = createTheme({
         // 'overlay.alternative': '#000000cc',
         // 'overlay.inverse': 'brandColor.grey000',
 
-        'primary.default': 'brandColor.blue500',
+        'primary.default': 'rgb(235,58,84)',
         'primary.alternative': 'brandColor.blue600',
         'primary.muted': '#0376c91a',
         'primary.inverse': 'brandColor.grey000',

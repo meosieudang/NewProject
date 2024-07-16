@@ -2,9 +2,11 @@
  * @format
  */
 
-import { AppRegistry } from 'react-native';
+import '@/utils/extensions';
+import { AppRegistry, LogBox } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
-import '@/utils/extensions';
 
 AppRegistry.registerComponent(appName, () => App);
+
+LogBox.ignoreLogs(['Non-serializable values were found in the navigation state']);
