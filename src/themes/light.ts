@@ -2,6 +2,7 @@ import { createTheme } from '@shopify/restyle';
 import { StatusBarStyle } from 'react-native';
 import { colors } from './color';
 import tokens from '@shopify/polaris-tokens';
+import { FONTS } from '@/constants';
 
 // const pxToNumber = (px: string) => {
 //     return parseInt(px.replace('px', ''), 10);
@@ -118,58 +119,52 @@ const theme = createTheme({
     },
     textVariants: {
         defaults: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_MEDIUM,
             fontSize: 14,
             lineHeight: 20,
-            fontWeight: 400,
             color: 'text.default'
         },
         caption: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_MEDIUM,
             fontSize: 12,
             lineHeight: 16,
-            fontWeight: 400,
             color: 'text.default'
         },
         captionSemibold: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_SEMIBOLD,
             fontSize: 12,
             lineHeight: 16,
-            fontWeight: 600,
             color: 'text.default'
         },
         body: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_MEDIUM,
             fontSize: 14,
             lineHeight: 20,
-            fontWeight: 400,
             color: 'text.default'
         },
         bodySemibold: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_SEMIBOLD,
             fontSize: 14,
             lineHeight: 20,
-            fontWeight: 400,
             color: 'text.default'
         },
         headline: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_BOLD,
             fontSize: 24,
             lineHeight: 28,
-            fontWeight: 600,
             color: 'text.default'
         },
         title: {
-            fontFamily: 'Mulish-Regular',
+            fontFamily: FONTS.QUICKSAND_BOLD,
             fontSize: 18,
             lineHeight: 24,
-            fontWeight: 600,
             color: 'text.default'
         },
         subtitle: {
+            fontFamily: FONTS.QUICKSAND_BOLD,
             fontSize: 16,
             lineHeight: 20,
-            fontWeight: 600
+            color: 'text.default'
         }
     }
 });
