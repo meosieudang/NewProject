@@ -4,18 +4,22 @@ import RNModal from 'react-native-modal';
 import { useToggle } from 'react-use';
 import LoadingButton from './LoadingButton';
 import { close, warning, check } from '@/assets';
+import { FONTS } from '@/constants';
 type P = {
     title?: string;
     message?: string;
     type: 'error' | 'success' | 'warning';
-    onPress?: any;
+    onPress?: () => void;
     isConfirm?: boolean;
     confirmText?: string;
 };
-export const refModal = React.createRef<{ setVisible: () => void; setToggle: ({ type, title, message, onPress }: P) => void }>();
+export const refModal = React.createRef<{
+    setVisible: () => void;
+    setToggle: ({ type, title, message, onPress, confirmText, isConfirm }: P) => void;
+}>();
 const Modal = () => {
     const [toggle, setToggle] = useToggle(false);
-    const [options, setOptions] = useState({
+    const [options, setOptions] = useState<P>({
         confirmText: '',
         isConfirm: false,
         title: 'Title',
@@ -31,15 +35,24 @@ const Modal = () => {
         },
         setVisible: setToggle
     }));
+
+    const _onPress = () => {
+        setToggle(false);
+        setTimeout(() => {
+            if (options.onPress) {
+                options.onPress();
+            }
+        }, 400);
+    };
     return (
-        <RNModal hideModalContentWhileAnimating useNativeDriver isVisible={toggle}>
+        <RNModal backdropTransitionOutTiming={0} hideModalContentWhileAnimating useNativeDriver isVisible={toggle}>
             <Box gap={'space-16'} bg={'background.default'} p={'space-16'} py={'space-24'} borderRadius={'border-radius-30'}>
                 <Box alignItems={'center'} gap={'space-16'}>
                     <Image width={100} height={100} resizeMode="contain" source={icon} />
-                    <Text textTransform={'capitalize'} variant={'title'} fontWeight={'bold'}>
+                    <Text textTransform={'capitalize'} variant={'title'}>
                         {options.title}
                     </Text>
-                    <Text variant={'body'} textAlign={'center'}>
+                    <Text variant={'subtitle'} fontFamily={FONTS.QUICKSAND_MEDIUM} textAlign={'center'}>
                         {options.message}
                     </Text>
                 </Box>
@@ -47,7 +60,7 @@ const Modal = () => {
                     <Box flex={1}>
                         <LoadingButton
                             title={Boolean(options.confirmText) ? options.confirmText : 'Ok'}
-                            onPress={Boolean(options.onPress) ? options.onPress : setToggle}
+                            onPress={Boolean(options.onPress) ? _onPress : setToggle}
                         />
                     </Box>
                     {options.isConfirm && (
