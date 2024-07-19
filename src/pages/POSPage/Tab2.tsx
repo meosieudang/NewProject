@@ -18,7 +18,7 @@ const Tab2 = () => {
     );
 };
 
-export default Tab2;
+export default React.memo(Tab2);
 
 const dd = _.times(30).map((t, i) => ({
     image: faker.image.url(),
@@ -29,8 +29,7 @@ const dd = _.times(30).map((t, i) => ({
 }));
 const ShopList = () => {
     const handlePress = (item) => {
-        refModal.current?.setVisible();
-        navigation.navigate('RequestPage', { ...item });
+        navigation.navigate('RequestWorkingPage', { ...item });
     };
     const renderItem = ({ item }) => (
         <ShopItem

@@ -26,7 +26,7 @@ const LeaveShopPage = () => {
     return (
         <Container px={'space-16'}>
             <Header title="Lí do rời khỏi quán" />
-            <Box alignItems={'center'} my={'space-8'}>
+            <Box alignItems={'center'} my={'space-16'} g={'space-8'}>
                 <Text variant={'subtitle'}>{`Hãy cho biết lí do bạn rời khỏi:`}</Text>
                 <Text variant={'title'}>{params?.shopName}</Text>
             </Box>

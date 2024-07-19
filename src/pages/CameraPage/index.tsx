@@ -1,16 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Reanimated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedProps, useSharedValue } from 'react-native-reanimated';
-import { Camera, CameraRuntimeError, PhotoFile, Templates, useCameraDevice, useCameraFormat, VideoFile } from 'react-native-vision-camera';
 import { Box, Container, TouchableOpacity } from '@/atoms';
-import { useIsFocused } from '@react-navigation/native';
-import { useIsForeground } from '@/hooks/useIsForeground';
-import useCheckCameraPermission from '@/hooks/useCheckCameraPermission';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '@/constants';
-import { ArrowLeft, Camera as CameraLucide } from 'lucide-react-native';
+import useCheckCameraPermission from '@/hooks/useCheckCameraPermission';
+import { useIsForeground } from '@/hooks/useIsForeground';
+import theme from '@/themes/light';
 import navigation from '@/utils/navigation';
 import { Header } from '@react-navigation/elements';
-import theme from '@/themes/light';
+import { useIsFocused } from '@react-navigation/native';
+import { ArrowLeft } from 'lucide-react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { Camera, CameraRuntimeError, PhotoFile, useCameraDevice, useCameraFormat, VideoFile } from 'react-native-vision-camera';
 
 const CameraPage = () => {
     const camera = useRef<Camera>(null);
@@ -129,9 +128,21 @@ const CaptureButton = ({ camera, onMediaCaptured }) => {
         }
     }, [camera, onMediaCaptured]);
 
+    const d = _.debounce(takePhoto, 500);
+
     return (
-        <TouchableOpacity onPress={takePhoto} position={'absolute'} alignSelf={'center'} bottom={34}>
-            <CameraLucide color={'white'} size={64} />
+        <TouchableOpacity onPress={d} position={'absolute'} alignSelf={'center'} bottom={34}>
+            <Box
+                borderRadius={'border-radius-9999'}
+                width={74}
+                height={74}
+                borderColor={'background.default'}
+                borderWidth={2}
+                justifyContent={'center'}
+                alignItems={'center'}
+            >
+                <Box width={64} height={64} bg={'background.default'} borderRadius={'border-radius-9999'} />
+            </Box>
         </TouchableOpacity>
     );
 };

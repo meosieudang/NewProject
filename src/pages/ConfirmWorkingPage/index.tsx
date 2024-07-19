@@ -20,10 +20,7 @@ const ConfirmWorkingPage = () => {
             title: 'Vị trí không chính xác',
             message: 'Vị trí hiện tại của bạn không đúng\nvới vị trí cửa hàng. Hãy chụp ảnh cửa\nhàng',
             onPress: () => {
-                refModal.current?.setVisible();
-                setTimeout(() => {
-                    navigation.navigate('CameraPage');
-                }, 500);
+                navigation.navigate('CameraPage');
             }
         });
 
@@ -33,10 +30,7 @@ const ConfirmWorkingPage = () => {
             title: 'Thành công',
             message: 'Bắt đầu ca làm việc thành công!',
             onPress: () => {
-                refModal.current?.setVisible();
-                setTimeout(() => {
-                    navigation.replace('DashboardWorkingPage');
-                }, 500);
+                navigation.replace('DashboardWorkingPage');
             },
             confirmText: 'đến màn hình làm việc'
         });

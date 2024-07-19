@@ -19,12 +19,12 @@ const Tab1 = () => {
     );
 };
 
-export default Tab1;
+export default React.memo(Tab1);
 
 const dd = _.times(30).map((t, i) => ({
     image: faker.image.url(),
     id: faker.string.alpha(10),
-    shopName: faker.location.city(),
+    shopName: faker.location.state(),
     address: faker.location.streetAddress(true),
     time: faker.date.betweens({ from: '2020-01-01T00:00:00.000Z', to: '2030-01-01T00:00:00.000Z', count: 2 })
 }));

@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { Circle, CircleDot } from 'lucide-react-native';
-import { Box, HStack, Pressable } from '@/atoms';
+import { Box, HStack, Pressable, Text } from '@/atoms';
 import theme from '@/themes/light';
 
 const SubTab = ({ tabs = [], renderTab }: { tabs: { name: string }[]; renderTab: (index: number) => React.ReactNode }) => {

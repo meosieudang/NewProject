@@ -53,12 +53,13 @@ const POSPage = () => {
         <Container px={'space-16'}>
             <Header title="Danh sách điểm bán" />
             <TabView
+                lazy
                 style={{ marginTop: 16 }}
                 swipeEnabled={false}
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
-                initialLayout={{ width: layout.width }}
+                initialLayout={{ width: layout.width, height: 0 }}
                 renderTabBar={(props) => {
                     const inputRange = props.navigationState.routes.map((x, i) => i);
                     return (

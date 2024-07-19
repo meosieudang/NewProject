@@ -13,13 +13,13 @@ import { refModal } from '@/components/Modal';
 const CheckInventoryPage = () => {
     const { control, handleSubmit, reset, watch, setValue } = useForm({
         defaultValues: {
-            fields: [{}],
-            checks: [{}]
+            fields: [],
+            checks: []
         }
     });
     useEffect(() => {
         setTimeout(() => {
-            reset({ fields: dd, checks: d2 });
+            reset({ fields: dd as any, checks: d2 as any });
         }, 400);
     }, []);
 
@@ -32,15 +32,12 @@ const CheckInventoryPage = () => {
     };
 
     const handlePress = () => {
-        refModal.current?.setVisible();
-        setTimeout(() => {
-            navigation.back();
-        }, 500);
+        navigation.back();
     };
     return (
         <Container px={'space-16'}>
             <Header title="Kiểm tra tồn kho" />
-            <Text>{`Vui lòng kiểm tra hàng tồn kho.`}</Text>
+            <Text mt={'space-16'}>{`Vui lòng kiểm tra hàng tồn kho.`}</Text>
             <Text>{`Nhập 0 nếu không xác định được số lượng.`}</Text>
 
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false} enableOnAndroid>
