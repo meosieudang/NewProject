@@ -4,7 +4,7 @@ import { Camera, CameraPermissionStatus } from 'react-native-vision-camera';
 
 const useCheckCameraPermission = () => {
     const [cameraPermissionStatus, setCameraPermissionStatus] = useState<CameraPermissionStatus>('not-determined');
-
+    const cameraPermission = Camera.getCameraPermissionStatus();
     const requestCameraPermission = useCallback(async () => {
         console.log('Requesting camera permission...');
         const permission = await Camera.requestCameraPermission();
@@ -15,9 +15,10 @@ const useCheckCameraPermission = () => {
     }, []);
 
     useEffect(() => {
-        if (cameraPermissionStatus === 'granted') requestCameraPermission();
-    }, [cameraPermissionStatus]);
-    return { cameraPermissionStatus };
+        if (cameraPermission !== 'granted') requestCameraPermission();
+    }, [cameraPermission]);
+
+    return { requestCameraPermission, cameraPermission };
 };
 
 export default useCheckCameraPermission;
