@@ -49,7 +49,7 @@ const CreatePOSPage = () => {
             <KeyboardAwareScrollView enableAutomaticScroll={false} showsVerticalScrollIndicator={false} enableOnAndroid>
                 <Box flex={1} my={'space-16'} g={'space-16'}>
                     <StoreList control={control} />
-                    <SurveyList data={fields} />
+                    <SurveyList data={fields} control={control} />
                 </Box>
             </KeyboardAwareScrollView>
             <LoadingButton title="Tiếp tục" onPress={handleSubmit(onSubmit)} />

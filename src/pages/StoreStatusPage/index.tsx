@@ -8,6 +8,7 @@ import { FONTS } from '@/constants';
 import navigation from '@/utils/navigation';
 import React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useForm } from 'react-hook-form';
 
 const StoreStatusPage = () => {
     const onSubmit = () => {
@@ -20,6 +21,8 @@ const StoreStatusPage = () => {
             message: 'Bạn đã làm khảo sát thành công'
         });
     };
+    const { control } = useForm({});
+
     return (
         <Container px={'space-16'} pb={'space-16'}>
             <Header title="Tình trạng cửa hàng" />
@@ -27,7 +30,7 @@ const StoreStatusPage = () => {
                 <Box flex={1} mt={'space-16'}>
                     <StoreInfo />
                     <Box borderWidth={1} borderColor={'border.default'} my={'space-16'} />
-                    <SurveyList data={DD} />
+                    <SurveyList data={DD} control={control} />
                 </Box>
             </KeyboardAwareScrollView>
             <LoadingButton title="Hoàn thành" onPress={onSubmit} />

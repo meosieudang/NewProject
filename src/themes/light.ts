@@ -89,10 +89,11 @@ const theme = createTheme({
         'warning.defaultPressed': _.get(tokenColors, 'color-bg-fill-active'),
 
         'success.default': _.get(tokenColors, 'color-bg-fill-success'),
+        'success.alternative': _.get(tokenColors, 'color-bg-fill-success-secondary'),
         'success.muted': _.get(tokenColors, 'color-bg-fill-success'),
         'success.inverse': _.get(tokenColors, 'color-bg-fill-success'),
-        'success.defaultHover': _.get(tokenColors, 'color-bg-fill-hover'),
-        'success.defaultPressed': _.get(tokenColors, 'color-bg-fill-active'),
+        'success.defaultHover': _.get(tokenColors, 'color-bg-fill-success-hover'),
+        'success.defaultPressed': _.get(tokenColors, 'color-bg-fill-success-active'),
 
         'info.default': _.get(tokenColors, 'color-bg-fill-warning'),
         'info.defaultHover': _.get(tokenColors, 'color-bg-fill-hover'),

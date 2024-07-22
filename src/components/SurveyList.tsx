@@ -5,9 +5,10 @@ import { Circle, CircleDot, Square, SquareCheckBig } from 'lucide-react-native';
 import React, { useState } from 'react';
 import TextField from './TextField';
 import { FONTS } from '@/constants';
+import { useController } from 'react-hook-form';
 
-const SurveyList = ({ data }) => {
-    const renderItem = ({ item }) => <DataItem {...item} />;
+const SurveyList = ({ data, control }) => {
+    const renderItem = ({ item, index }) => <DataItem {...item} index={index} control={control} />;
 
     return (
         <Box flex={1}>
@@ -17,7 +18,7 @@ const SurveyList = ({ data }) => {
                 ItemSeparatorComponent={() => <Box my={'space-8'} />}
                 data={data}
                 renderItem={renderItem}
-                estimatedItemSize={1000}
+                estimatedItemSize={100}
             />
         </Box>
     );
@@ -28,25 +29,29 @@ export default SurveyList;
 const DataItem = (p) => {
     const [radioItem, setRadioItem] = useState({});
     const [checkboxItem, setCheckboxItem] = useState<any[]>([]);
+    const { field } = useController({ control: p.control, name: `data[${p.index}].resultsClient` });
 
-    const handleTypeRadio = (item) => {
+    const handleTypeRadio = (item, index) => {
         setRadioItem((prev) => ({ [item.id]: item }));
+        field.onChange([item.id]);
     };
-    const handleTypeCheckbox = (item) => {
+    const handleTypeCheckbox = (item, index) => {
         const find = _.find(checkboxItem, (t) => t.id === item.id);
+        let newItems;
         if (find) {
-            const filter = _.filter(checkboxItem, (t) => t.id !== item.id);
-            setCheckboxItem(filter);
+            newItems = _.filter(checkboxItem, (t) => t.id !== item.id);
         } else {
-            setCheckboxItem((prev) => [...prev, item]);
+            newItems = [...checkboxItem, item];
         }
+        setCheckboxItem(newItems);
+        field.onChange(newItems.map((i) => i.id));
     };
-    const handleType = ({ type, item }) => {
+    const handleType = ({ type, item, index }) => {
         if (type === 'radio') {
-            return handleTypeRadio(item);
+            return handleTypeRadio(item, index);
         }
         if (type === 'checkbox') {
-            return handleTypeCheckbox(item);
+            return handleTypeCheckbox(item, index);
         }
     };
 
@@ -63,7 +68,7 @@ const DataItem = (p) => {
                             key={item.id}
                             data={p}
                             p={item}
-                            onPress={() => handleType({ type: p.t, item })}
+                            onPress={() => handleType({ type: p.t, item, index: p.index })}
                         />
                     );
                 })}

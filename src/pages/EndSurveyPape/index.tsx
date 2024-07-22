@@ -5,6 +5,7 @@ import { refModal } from '@/components/Modal';
 import SurveyList from '@/components/SurveyList';
 import navigation from '@/utils/navigation';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const EndSurveyPage = () => {
@@ -18,12 +19,13 @@ const EndSurveyPage = () => {
             message: 'Bạn đã làm khảo sát thành công'
         });
     };
+    const { control } = useForm({});
     return (
         <Container p={'space-16'} pt={'space-0'}>
             <Header title="Khảo sát cuối ca" />
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false} enableOnAndroid>
                 <Box flex={1} mt={'space-16'}>
-                    <SurveyList data={DD} />
+                    <SurveyList data={DD} control={control} />
                 </Box>
             </KeyboardAwareScrollView>
             <LoadingButton title="Hoàn thành" onPress={onSubmit} />
