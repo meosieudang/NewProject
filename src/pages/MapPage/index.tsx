@@ -26,8 +26,9 @@ import { PermissionsAndroid, Platform, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BottomSheetMap, { Handle } from './BottomSheetMap';
 const a = require('./earthquakes.json');
+const { accessToken } = require('../../../env.json');
 
-setAccessToken('sk.eyJ1IjoidGh1YW5teXNwYSIsImEiOiJjbHl3cHpjYmQxcHh4Mm1xbGxvY292a3BrIn0.keOfBdJYKtydFnihgAzdIQ');
+setAccessToken(accessToken);
 
 type ParamList = {
     Data: {

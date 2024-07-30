@@ -10,7 +10,8 @@
         "p": "npx pod-install",
         "c": "cd android && ./gradlew clean && cd ..",
         "apk": "cd android && ./gradlew app:assembleRelease && open app/build/outputs/apk/release",
-        "clear": "react-native start --reset-cache"
+        "clear": "react-native start --reset-cache",
+        "post": "node ./scripts/set_access_token.js"
     },
     "dependencies": {
         "@backpackapp-io/react-native-toast": "^0.11.0",
