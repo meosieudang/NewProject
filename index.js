@@ -11,5 +11,5 @@ AppRegistry.registerComponent(appName, () => App);
 
 LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
-    'Tried to modify key `reduceMotion` of an object which has been already passed to a worklet.'
+    '[Reanimated] Tried to modify key `reduceMotion` of an object which has been already passed to a worklet. '
 ]);

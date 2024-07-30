@@ -8,6 +8,9 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
+# RN MAPBOX GL
+$RNMapboxMapsVersion = '= 11.0.0'
+
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
@@ -23,6 +26,11 @@ target 'NewProject' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # RN MAPBOX GL
+  pre_install do |installer|
+    $RNMapboxMaps.pre_install(installer)
+  end
+
   target 'NewProjectTests' do
     inherit! :complete
     # Pods for testing
@@ -36,5 +44,7 @@ target 'NewProject' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    # RN MAPBOX GL
+    $RNMapboxMaps.post_install(installer)
   end
 end
