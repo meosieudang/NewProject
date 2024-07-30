@@ -8,5 +8,6 @@ const loading = require('./icons/loading.png');
 const smartCity = require('./icons/smart-city.png');
 const leftArrow = require('./icons/left-arrow.png');
 const caretDown = require('./icons/caret-down.png');
+const locationAddress = require('./icons/location.png');
 
-export { loading, caretDown, leftArrow, warning, bgApp, close, check, kpi, idea, smartCity };
+export { locationAddress, loading, caretDown, leftArrow, warning, bgApp, close, check, kpi, idea, smartCity };

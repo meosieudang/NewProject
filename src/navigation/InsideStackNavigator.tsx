@@ -34,6 +34,7 @@ import SurveyTopupStep1Page from '@/pages/SurveyTopupStep1Page';
 import SurveyTopupStep2Page from '@/pages/SurveyTopupStep2Page';
 import NearPOSPage from '@/pages/NearPOSPage';
 import ResultSurveyPage from '@/pages/ResultSurveyPage';
+import MapPage from '@/pages/MapPage';
 
 const InsideStack = createNativeStackNavigator();
 
@@ -72,6 +73,7 @@ const InsideStackNavigator = () => {
             <InsideStack.Screen name="KPIPage" component={KPIPage} />
             <InsideStack.Screen name="SurveyTopupStep1Page" component={SurveyTopupStep1Page} />
             <InsideStack.Screen name="SurveyTopupStep2Page" component={SurveyTopupStep2Page} />
+            <InsideStack.Screen name="MapPage" component={MapPage} />
 
             {/* Confirm */}
             <InsideStack.Screen name="ConfirmAgePage" component={ConfirmAgePage} />

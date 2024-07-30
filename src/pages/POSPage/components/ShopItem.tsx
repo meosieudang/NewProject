@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box, HStack, Image, Text, TouchableOpacity } from '@/atoms';
 import { ArrowUpRight, CircleCheck } from 'lucide-react-native';
 import theme from '@/themes/light';
@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import LoadingImage from '@/components/LoadingImage';
 
 const ShopItem = (t) => {
+    const random = useMemo(() => Math.random() > 0.5, []);
     return (
         <TouchableOpacity
             style={{
@@ -41,7 +42,7 @@ const ShopItem = (t) => {
                     <Box flex={1}>
                         <Text numberOfLines={1}>{t.address}</Text>
                     </Box>
-                    {Math.random() > 0.5 && <CircleCheck fill={theme.colors['success.default']} color={'white'} size={32} />}
+                    {random && <CircleCheck fill={theme.colors['success.default']} color={'white'} size={32} />}
                 </HStack>
             </Box>
         </TouchableOpacity>

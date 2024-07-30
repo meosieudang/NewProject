@@ -8,7 +8,7 @@ import { Theme } from '@/themes';
 
 type OnLoadImage = NativeSyntheticEvent<ImageLoadEventData>;
 
-const LoadingImage = ({ path = '', width = WINDOW_WIDTH - 32, height = 200 }) => {
+const LoadingImage = ({ path = '', width = WINDOW_WIDTH - 32, height = 200, borderBottomNone = false }) => {
     const uri = path.startsWith('http') ? path : `file://${path}`;
     const [hasMediaLoaded, setHasMediaLoaded] = useState(false);
     const source = useMemo(() => ({ uri }), [path]);
@@ -35,6 +35,8 @@ const LoadingImage = ({ path = '', width = WINDOW_WIDTH - 32, height = 200 }) =>
         >
             <Image
                 borderRadius={'border-radius-8' as any}
+                borderBottomRightRadius={borderBottomNone ? 'border-radius-0' : ('border-radius-8' as any)}
+                borderBottomLeftRadius={borderBottomNone ? 'border-radius-0' : ('border-radius-8' as any)}
                 source={source}
                 style={StyleSheet.absoluteFill}
                 resizeMode="cover"

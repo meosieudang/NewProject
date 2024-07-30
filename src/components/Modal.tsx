@@ -5,6 +5,7 @@ import { useToggle } from 'react-use';
 import LoadingButton from './LoadingButton';
 import { close, warning, check } from '@/assets';
 import { FONTS } from '@/constants';
+import { InteractionManager } from 'react-native';
 type P = {
     title?: string;
     message?: string;
@@ -30,8 +31,10 @@ const Modal = () => {
     const icon = options.type === 'error' ? close : options.type === 'warning' ? warning : check;
     useImperativeHandle(refModal, () => ({
         setToggle: ({ type = 'success', title = 'Thông báo', message = '', onPress, confirmText = 'OK', isConfirm = false }: P) => {
-            setToggle();
-            setOptions({ type, title, message, onPress, isConfirm, confirmText });
+            InteractionManager.runAfterInteractions(() => {
+                setToggle();
+                setOptions({ type, title, message, onPress, isConfirm, confirmText });
+            });
         },
         setVisible: setToggle
     }));

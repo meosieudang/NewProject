@@ -8,7 +8,7 @@ import { Header } from '@react-navigation/elements';
 import { useIsFocused } from '@react-navigation/native';
 import { ArrowLeft } from 'lucide-react-native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text } from 'react-native';
 import { Camera, CameraRuntimeError, PhotoFile, useCameraDevice, useCameraFormat, VideoFile } from 'react-native-vision-camera';
 
 const CameraPage = () => {
@@ -19,6 +19,7 @@ const CameraPage = () => {
     let device = useCameraDevice(cameraPosition);
 
     const [targetFps, setTargetFps] = useState(60);
+    const [isLoading, setIsLoading] = useState(false);
 
     // check if camera page is active
     const isFocussed = useIsFocused();
@@ -55,6 +56,7 @@ const CameraPage = () => {
     const onMediaCaptured = useCallback(
         (media: PhotoFile | VideoFile, type: 'photo' | 'video') => {
             console.log(`Media captured! ${JSON.stringify(media)}`);
+            setIsLoading(false); // Stop loading after capture
             navigation.navigate('MediaPage', {
                 path: media.path,
                 type: type
@@ -96,7 +98,13 @@ const CameraPage = () => {
                 )}
             />
 
-            <CaptureButton camera={camera} onMediaCaptured={onMediaCaptured} />
+            {isLoading ? (
+                <Box position="absolute" alignSelf="center" bottom={34} justifyContent="center" alignItems="center">
+                    <ActivityIndicator size="large" color={theme.colors['background.default']} />
+                </Box>
+            ) : (
+                <CaptureButton camera={camera} onMediaCaptured={onMediaCaptured} setIsLoading={setIsLoading} />
+            )}
         </Container>
     );
 };
@@ -111,10 +119,11 @@ const NoCameraErrorView = () => {
     );
 };
 
-const CaptureButton = ({ camera, onMediaCaptured }) => {
+const CaptureButton = ({ camera, onMediaCaptured, setIsLoading }) => {
     //#region Camera Capture
     const takePhoto = useCallback(async () => {
         try {
+            setIsLoading(true);
             if (camera.current == null) throw new Error('Camera ref is null!');
 
             console.log('Taking photo...');
@@ -125,8 +134,9 @@ const CaptureButton = ({ camera, onMediaCaptured }) => {
             onMediaCaptured(photo, 'photo');
         } catch (e) {
             console.error('Failed to take photo!', e);
+            setIsLoading(false);
         }
-    }, [camera, onMediaCaptured]);
+    }, [camera, onMediaCaptured, setIsLoading]);
 
     const d = _.debounce(takePhoto, 500);
 
